@@ -18,11 +18,8 @@ function displayData(data, elem) {
 // Функция для получения числа из Input 
 function inputNum (inputClass) {
     const nummer = document.querySelector(inputClass).value;
-    if(nummer != '' && Number.isInteger(Number(nummer)) && Number(nummer) >= 1 && Number(nummer) <= 100 ) {
-        return nummer;
-    } else {
-        return false;
-        };
+    if(nummer != '' && !isNaN(nummer) && +nummer >= 1 && +nummer <= 100 ) return nummer;
+
 }
 
 // Выводим последний визит при новом старте
