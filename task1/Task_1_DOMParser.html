@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOMParser</title>
+</head>
+<body>
+  <script>
+      const parser = new DOMParser();
+      const xmlString = ` 
+        <list>
+            <student>
+              <name lang="en">
+                <first>Ivan</first>
+                <second>Ivanov</second>
+              </name>
+              <age>35</age>
+              <prof>teacher</prof>
+            </student>
+            <student>
+              <name lang="ru">
+                <first>Петр</first>
+                <second>Петров</second>
+              </name>
+              <age>58</age>
+              <prof>driver</prof>
+            </student>
+      </list>`;
+
+    // Parsing XML
+    function parserXML(xmlStr) {
+      const parsedXML = parser.parseFromString(xmlStr, "text/xml");
+        return parsedXML;
+    };
+
+    // Get the DOM 
+    const list = getXmlDom (xmlString,'list');
+
+    function getXmlDom (xmlStr, elm) {
+      return parserXML(xmlStr).querySelector(elm);
+    };
+    
+    // Get the Element
+    function getDomElemnt (xmlStr, elm) {
+      return xmlStr.querySelectorAll(elm).length > 1 ? xmlStr.querySelectorAll(elm) : xmlStr.querySelector(elm);
+    };
+    
+    // Get the Attribut
+    function getAttribut (elm, attr) {
+      return elm.getAttribute(attr);
+    };
+
+    const students = getDomElemnt (list, 'student');
+    
+    // Writing data to an object 1
+    const student1 = {
+      name: `${getDomElemnt (getDomElemnt (students[0], 'name'), 'first').textContent} ${getDomElemnt (getDomElemnt (students[0], 'name'), 'second').textContent}`,
+      age: getDomElemnt (students[0], 'age').textContent,
+      prof: getDomElemnt (students[0], 'prof').textContent,
+      lang: getAttribut (getDomElemnt (students[0], 'name'), 'lang'),
+    };
+
+    // Writing data to an object 2
+    const student2 = {
+      name: `${getDomElemnt (getDomElemnt (students[1], 'name'), 'first').textContent} ${getDomElemnt (getDomElemnt (students[1], 'name'), 'second').textContent}`,
+      age: getDomElemnt (students[1], 'age').textContent,
+      prof: getDomElemnt (students[1], 'prof').textContent,
+      lang: getAttribut (getDomElemnt (students[1], 'name'), 'lang'),
+    };
+
+    // Result object
+    const JSobj = { list:[ student1, student2,] };
+
+    console.log(JSobj);
+
+    </script>
+</body>
+</html>

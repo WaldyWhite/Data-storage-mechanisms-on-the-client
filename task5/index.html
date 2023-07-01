@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Fetch</title>
+</head>
+<body>
+    <section class="body-container">
+        <h2 class="body-container__title"></h2>
+        <div class="container-form">
+            <label for="userId">Users ID</label>
+            <input class="input js-set-id" type="text" name="userId" id="userId" autocomplete="off">
+            <button class="btn js-btn-get">Получить список задач</button>
+        </div>
+        <div class="container-tasks">
+            <h3 class="container-tasks__title">myTasks</h3>
+            <ol class="tasks__list"></ol>
+        </div>
+    </section>
+</body>
+<script src="script.js"></script>
+</html>

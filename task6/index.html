@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Final task</title>
+</head>
+<body>
+    <section class="main-section">
+        <div class="section-container">
+            <div class="container-input-page">
+                <label class="label" for="first-number">номер страницы</label>
+                <input class="input_page container__input  js-input-pageNum" type="text" id="first-number" autocomplete="off">
+            </div>
+            <div class="container-input-limit">
+                <label class="label" for="second-number">лимит</label>
+                <input class="input-limit container__input js-input-limitNum" type="text" id="second-number" autocomplete="off">
+            </div>
+                <p class="container_text  js-text-error"></p>
+                <button class="btn js-dtn-send">запрос</button>
+        </div>
+        <div class="section-data"></div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>

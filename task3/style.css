@@ -1,0 +1,44 @@
+.time-box {
+    color: rgb(92, 92, 92);
+    font-size: large;
+    font-weight: bold;
+    width: 500px;
+    margin: 100px  auto;
+    padding: 20px;
+    border: 1px solid gray;
+    text-align: center;
+}
+.item {
+    color: rgb(128, 128, 128);
+}
+
+.btn {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: none;
+    cursor: pointer;
+    
+    margin: 15px 10px;
+    padding: 10px 15px;
+    border-radius: 1px;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: white;
+    background: #315efb;
+    transition: 0.3s;
+  }
+  
+  .btn:hover {
+    box-shadow: 0px 2px 8px 2px rgba(141,150,178,.3);
+    transform: scale(1.05);
+  }
+  
+  
+  .btn:active {
+  box-shadow: 0px 1px 4px 1px rgba(141,150,178,.3);
+    transform: scale(0.98);
+  }
