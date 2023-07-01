@@ -1,3 +1,5 @@
+const url = `https://picsum.photos/v2/list?`;
+
 // Функция создаёт img карточки
 function displayData(data, elem) {
     let ImagesCards = '';
@@ -16,10 +18,17 @@ function displayData(data, elem) {
 };
 
 // Функция для получения числа из Input 
-function inputNum (inputClass) {
+function validateInput (inputClass) {
     const nummer = document.querySelector(inputClass).value;
     if(nummer != '' && !isNaN(nummer) && +nummer >= 1 && +nummer <= 100 ) return nummer;
+}
 
+// Функция принимает url параметры page и limit
+function urlParams (url, page, limit) {
+    let urlObj = new URL(url);
+    urlObj.searchParams.set('page', page);
+    urlObj.searchParams.set('limit', limit);
+    return urlObj;
 }
 
 // Выводим последний визит при новом старте
@@ -32,7 +41,7 @@ btn.addEventListener('click', () => {
     localStorage.clear()
     // Promise
     const promise = new Promise((resolve, reject) => {
-        const pageNumer = inputNum ('.js-input-pageNum');
+        const pageNumer = validateInput ('.js-input-pageNum');
         if(pageNumer) {
             resolve (pageNumer); //  Передаём дальше результат работы функции
             } else {
@@ -43,9 +52,9 @@ btn.addEventListener('click', () => {
     promise
         .then (pageNum => {
             return new Promise ((resolve, reject) => {
-                const limitNummer = inputNum ('.js-input-limitNum');
+                const limitNummer = validateInput ('.js-input-limitNum');
                 if(limitNummer) {
-                    resolve (`https://picsum.photos/v2/list?page=${pageNum}&limit=${limitNummer}`);
+                    resolve (urlParams (url, pageNum, limitNummer));
                 } else {
                     reject ('Лимит вне диапазона от 1 до 10'); // есил limitNummer = fslse
                     };
@@ -59,7 +68,7 @@ btn.addEventListener('click', () => {
                     return response.json()})
                 .then((json) => {
                     return json;})
-            .   catch(() => {console.log('Error')})
+                .catch(() => {console.log('Error')})
                 })
 
         .then(apiData => {
